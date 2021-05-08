@@ -1,0 +1,35 @@
+GET http://localhost:3000
+
+###
+
+POST http://localhost:3000/signin
+Content-Type: application/json
+
+{
+    "email": "john@gmail.com",
+    "password": "cookies"
+}
+
+###
+
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "email": "ann@gmail.com",
+    "password": "apples",
+    "name": "Ann"
+}
+
+###
+
+GET http://localhost:3000/profile/123
+
+###
+
+POST http://localhost:3000/image
+Content-Type: application/json
+
+{
+    "id": 123
+}
