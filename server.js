@@ -6,10 +6,12 @@
 // /image --> PUT --> user
 
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 const database = {
   users: [
@@ -41,7 +43,7 @@ app.post('/signin', (req, res) => {
     req.body.email === database.users[0].email &&
     req.body.password === database.users[0].password
   ) {
-    res.json('success');
+    res.json(database.users[0]);
   } else {
     res.status(400).json('error logging in');
   }
@@ -71,7 +73,7 @@ app.get('/profile/:id', (req, res) => {
   res.status(400).json('not found');
 });
 
-app.post('/image', (req, res) => {
+app.put('/image', (req, res) => {
   const { id } = req.body;
   for (let user of database.users) {
     if (user.id === id) {
