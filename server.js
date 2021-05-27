@@ -30,13 +30,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', () => {});
+app.get('/', (req, res) => res.send("It's working!"));
 app.post('/signin', handleSignIn(db, bcrypt));
 app.post('/register', handleRegister(db, bcrypt));
 app.get('/profile/:id', handleProfileGet(db));
 app.put('/image', handleImage(db));
 app.post('/imageurl', handleApiCall);
 
-app.listen(3000, () => {
-  console.log('app is listening on port 3000');
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`app is listening on port ${PORT}`);
 });
